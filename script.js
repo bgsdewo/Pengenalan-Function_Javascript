@@ -1,161 +1,159 @@
-// let x = 10;
-// console.log(x)
+//Materi callback function dan method" milik array
 
-//Pengenalan function
-// function student() {
-//    const requirement = 'Berpendidikan SD,SMP,SMA'
-//     return requirement;
-// }    
-// console.log(student())
+//Video 1 (For Each method)
+//For each method adalah:Memanggil sebuah fungsi sebanyak jumlah element yang dimiliki array
+//conoh pada array
+// const angka = [1,2,3,4,5,6,7,8,9]
 
-
-//function dengan parameter dan argumen
-// function student(name) {
-//     const studentName = `nama siswa ini adalah ${name}`
-//     return studentName
-// }
-// console.log(student('Bagus'))
-
-//function dengan multiple param dan argumen
-// function student(name,addres) {
-//     const studentName = `nama siswa ini adalah ${name} dan dia ber alamat di ${addres}`
-//     return studentName
-// }
-// console.log(student('Bagus','Jakarta'))
-
-
-//lingkup variabel scope
-// let progamming = 'SAASS'//ini bisa dipake jika progamming tidak ada dalam function
-// function css() {
-//     // let progamming = 'CSS'
-//     console.log(progamming)
-// }
-// css()
-
-//bloked scop
-// let tinggi =8
-// if(tinggi >5) {
-//     let lebar = 10;
-//     console.log(lebar)//ini bisa
-// }
-// console.log(lebar)//ini gabisa 
-//begitu juga dengan lingkup perulangan
-//block scope hanya dimiliki oleh const dan let saja,tidak dengan var
-
-//contoh penggunaan yang tidak baik dari VAR
-// let tinggi =8
-// if(tinggi >5) {
-//     var lebar = 10;
-//     // console.log(lebar)//ini bisa
-// }
-// console.log(lebar)//ini bisa
-// //dan lebih parahnya bisa dimanipulasi
-
-// for(let index =0;index<10;index++) {
-//     var lebar = index;
-//     console.log(lebar)
-// }
-
-
-
-//lexical scope
-// function lamarKerja() {
-//     const jabatan = 'Progammer'
-//     function gilaKerja() {
-//         const jamKerja= 10;
-//         //function baru
-//         function orangDalam() {
-//             let kenalan = `Orang dalam bisa memasukan ${jabatan} dan dia bekerja selama ${jamKerja} jam`
-//             console.log(kenalan)
-//         }
-//         orangDalam()
+// angka.forEach(function(pepe){
+//     if(pepe % 2 === 0){
+//         console.log(pepe)
 //     }
-//     gilaKerja()
-// }//penutup dari function lamarKerja
+// })
 
-// lamarKerja()
-
-
-//Function ekspresi
-// const perpangkatan = function(nilai) {
-//     return nilai * nilai;
+// //contoh objek dalam array//Jika Anda ingin memiliki beberapa objek dalam satu variabel, Anda bisa menggunakan tanda kurung siku[]
+// untuk membuat array objek.
+//Berikut adalah contoh penulisan yang benar:
+// const animes = [{
+//     title: 'Demon Slayer',
+//     Rating: 80,
+// },
+// {
+//     title:'Naruto Shipuden',
+//     Rating: 85,
+// },
+// {
+//     title:'Hunter X Hunter',
+//     Rating: 85,
 // }
-// console.log(perpangkatan(10))
+// ]
 
-//Function Sebagai Argument Function Lain
-//  function duaKali(func) {
-//     func()
-//     func()
-//  }
+// animes.forEach(function(anime){
+//     console.log(`${anime.title} ${anime.Rating} / 100`)
+// })
 
-//  function lemparDadu() {
-//     const hasil = Math.floor(Math.random()*6) +1
-//     console.log(hasil)
-//  }
-//  duaKali(lemparDadu)
+// //jika tanpa menggunakan for each kita akan mencetaknya satu persatu
+// //berikut contohnya
+// console.log(animes[0].title); // Cetak judul anime pertama
+// console.log(animes[0].Rating); // Cetak rating anime pertama
 
-//Function Bernilai Balik Function
-// function hasilnyaAdalahFunction() {
-//     const rand = Math.random()
-//     if (rand > 0.1) {
-//         return function() {
-//             console.log(`Selamat,angka yang kamu dapatkan lebih besar! ${rand}`)
-//         };
-//     }else {
-//         return function() {
-//             console.log(`Selamat,angka yang kamu dapatkan lebih kecil! ${rand}`)
-//         }
-//     }
-// }
 
-// const result = hasilnyaAdalahFunction()
-// result()
+//method peta
+//nilai baliknya adalah array baru yang sudah dimodifikasi melalui callback function dari suatu array
+//contoh pengguaan method map ini
 
-//Definisi sebuah method
-//ketika menambahkan function pada suatu object property
-// const aritmatika = {
-//     perkalian: function(x,y) {
-//         return x*y
-//     },
-//     pembagi:function(x,y) {
-//         return x/y
-//     }
+// const  angka = [1,2,3,4,5,6,7,8,9]
+// const angkaDoubles= angka.map(function(num){
+//     return num *2;
+// })
+// console.log(angkaDoubles)
+
+//Function Arrow
+//setiap function boleh memake parameter ataupun tidak memake parameter
+// const perpangkatan =(x) => {
+//     return x * x;
 // }
 
-// console.log(aritmatika.pembagi(12,4))
+// console.log(perpangkatan(5))
 
-//Keyword this:
-// const saya = {
-//     nama: 'Bagus',
-//     Belakang: 'Sadewo',
-//     namaLengkap: function() {
-//         const hasil = `Nama lengkap saya adalah ${this.nama +=(' ') + this.Belakang}`
-//         return hasil
-//     }
-// }
+//Kembali secara implisit dari fungsi panah
+//Catatan utk penggunaan dari implisit fungsi panah
+//1.tidak boleh lebih dari satu baris.
+//2.program yang dijalankan tidak boleh pake ;
+//3. harus pake () jangan {}
 
-// console.log(saya.namaLengkap())
+// const perpangkatan =(x) =>  x * x//bisa gini juga kalo isinya operasi aritmatika sederhana
+// console.log(perpangkatan(9))
+
+//contoh yang lain
+// const random = () => (
+//     Math.random(Math.random()*1000)
+// )
+
+//memahami Senttimeout dan Sentinterval
+// callback function yang bukan berasal dari Array.fungsinya untuk memberi waktu jeda dan melakukan perulangan
+// //setiap waktu yang ditenntutakn
+
+// console.log('Halo....');
+// setTimeout(() => {
+//     console.log('OTW BRO')
+// }, 5000);//proses akan dilakukan setelah 5 detik
+// console.log('masih disana ga?')
+
+// setInterval(() => {
+//     console.log(2*2)  
+
+// },3000);//proses akan dilakukan setiap 3 detik
+
+//cara memberhentikan suatu interval,lakukan seperti ini
+// const interval = setInterval(() => {
+//          console.log(2*2)  
+//      },3000);
+//      clearInterval(interval)
 
 
-//Pengunnan try dan catch
-// try{
-//     saya.kenalan()//belom tedefinisi tapi masi bisa meng run proses selanjutnya
-// } catch {
-//     console.log('Error!!')
-// }
-//penggunaan try dan catch itu buat kalo misalnya ada program yang error dia tidak akan merusaknya
-//contohnya
+//Memilih data tertentu di dalam array metode filter
+//filter
+//function yang mengembalikan nilai array lagi yg sudah dimanipulasi sesuai
+//dengan kriteria yang ditetapkan
+//jadi sebenarnya map sma filter sama,tapi ini bisa jadi
+//kombinasi yg sempurna pertama gunakan filterjika sudah di filter kita pakai map
 
-// saya.kenalan();//ini belom terdefinisi tapi bisa merusak kode selanjutnya
-// console.log('Setelah proses')
-// function teriak(a) {
-//     try {
-//        console.log(a.toUppercase())
+// const  angka = [1,2,3,4,5,6,7,8,9]
+// const angkaDoubles= angka.filter((num)=>{
+//     return num <5;
+// })
+// console.log(angkaDoubles)
 
-//     }catch(error) {
-//         console.log(error);
-//         console.log('Yang kamu masukan bukan string')
-//     }
-// }
+//every
+//akan mengembalikan nilai boolean.true pada saat selurh nilai  yg ada pada suatu
+//array memiliki kriteria yang sama(benar semua kaya operasi and ).false jika sebaliknya   
 
-// teriak('Babu')
+// const exampScore = [80,85,70,90,93,77];
+// const isGraduate = exampScore.every((score) => score >= 75);
+
+// console.log(isGraduate)
+
+//kalo some sama kaya every:tapi salah satunya sesuai maka dia true kaya or gtu pokoknya
+// const exampScore = [80,85,70,90,93,77];
+// const cetakSome = exampScore.some((salahSatu) => salahSatu <=70)
+
+// console.log(cetakSome)
+
+//mendapatkan satu nilai sesuai kondisi dari sebuah array dengan reduce
+//reduce:Melakukan proses sebanyak element milik suatu array.nilai baliknya adalah single value
+//reduce ini bukan hanya bisa digunakan di array murni saja,tapi object array juga bisa
+//bisa pake validasi seeprti if dll gtu
+
+// const exampScore = [80,85,70,90,93,77];
+
+// const jumlah=exampScore.reduce((total,score)     => {
+//     return total + score;
+// })
+
+// console.log(jumlah)
+
+//Object dalam arrow function mengarah pada object global window   
+
+const person = {
+    firstName: 'Bagus',
+    lastName: 'Sadewo',  
+    fullname: () => {
+        console.log(this)
+        return `${this.firstName} ${this.lastName}`;
+    },
+    panggilNanti: function() {
+        setTimeout(() => {
+            console.log(this)
+            console.log(`${this.firstName} ${this.lastName}`);
+        }, 3000);
+    },
+    regularName: function() {
+        return `${this.firstName} ${this.lastName}`;
+    },
+};
+
+console.log(person.fullname())
+console.log(person.regularName())
+
+console.log(person.panggilNanti())
